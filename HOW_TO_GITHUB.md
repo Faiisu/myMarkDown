@@ -12,7 +12,7 @@
 ### Centralized
 
 all team member connect to central server
-![[imgs/Pasted image 20250217235049.png]]
+[[imgs/Pasted image 20250217235049.png]]
 
 share change with other
 
