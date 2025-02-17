@@ -187,4 +187,13 @@ db.orders.aggregate([
   ]
 }
 ```
+### using aggregation example
+find most 3 customer total spent
+```js
+db.orders.aggregate([
+  { $group: { _id: "$customer", total_spent: { $sum: "$total_price" } } },
+  { $sort: { total_spent: -1 } },
+  { $limit: 3 }
+])
+```
 
