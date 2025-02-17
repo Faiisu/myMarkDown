@@ -85,16 +85,15 @@ git init //create .git file in directory
 
 ```mermaid
 graph LR
+    A[Working Directory] -->|git add| B[Staging Area]
 
-  A[Working Directory] -->|git add| B[Staging Area]
+    B -->|git commit| C[Local Repo]
 
-  B -->|git commit| C[Local Repo]
+    C -->|git push| D[Remote Repo]
 
-  C -->|git push| D[Remote Repo]
+    D -->|git pull| C
 
-  D -->|git pull| C
-
-  A -->|git checkout| C
+    C -->|git checkout| A
 ```
 
 
