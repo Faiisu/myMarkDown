@@ -22,7 +22,7 @@ share change with other
 
 all team member can save snapshots locally on machine
 
-![[imgs/Pasted image 20250217235132.png]]
+![[Pasted image 20250217235132.png]]
 
 if server offline it still can work together
 
