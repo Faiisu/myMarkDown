@@ -12,7 +12,7 @@
 ### Centralized
 
 all team member connect to central server
-![[Pasted image 20250217235049.png]]
+![[imgs/Pasted image 20250217235049.png]]
 
 share change with other
 
@@ -22,7 +22,7 @@ share change with other
 
 all team member can save snapshots locally on machine
 
-![[Pasted image 20250217235132.png]]
+![[imgs/Pasted image 20250217235132.png]]
 
 if server offline it still can work together
 
@@ -52,7 +52,7 @@ git config --global -e
 ```
 
 - Fix vs code isn’t installed path
-    ![[Pasted image 20250217235211.png]]
+    ![[imgs/Pasted image 20250217235211.png]]
 
 ## End of line setting
 
@@ -62,7 +62,7 @@ macOS : \n
 
 if don’t handle end of lines properly → run into some weird issues
 
-![[Pasted image 20250217235243.png]]
+![[imgs/Pasted image 20250217235243.png]]
 
 ```json
 git config --global core.autocrlf input //macOS
@@ -153,7 +153,7 @@ git commit //edit commit message in editor
 
 file is removed
 
-![[Pasted image 20250218000232.png]]
+![[imgs/Pasted image 20250218000232.png]]
 
 Git deleted status
 
@@ -221,7 +221,7 @@ git config --global difftool.vscode.cmd "code --wait --diff $LOCAL $REMOTE"
 git config --global -e //open .gitconfig
 ```
 
-![[Pasted image 20250218000353.png]]
+![[imgs/Pasted image 20250218000353.png]]
 add $LOCAL $REMOTE in cmd
 
 ### using git difftool
