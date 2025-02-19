@@ -298,10 +298,31 @@ git push origin -d [branch name] //delete branch in remote repositor
 ```tsx
 git remote add origin [git https] //add git link (use "origin" as shortcut)
 
-git fetch origin //ดึงข้อมูลล่าสุดจาก git remote
-git pull orgin // fetch + merge (ดึงข้อมูลจาก git ปัจจุบันและ merge เข้า branch ปจบ)
+git fetch origin [branch]//ดึงข้อมูลล่าสุดจาก git remote
+git pull origin [branch]// fetch + merge (ดึงข้อมูลจาก git ปัจจุบันและ merge เข้า branch ปจบ)
+git pull origin [branch] --rebase
 ```
 
 git fetch → ดูการเปลี่ยนแปลงก่อน merge ได้ (careful)
 
 git pull → merge เลย
+git pull + rebase ->
+
+**git pull origin main --rebase**
+
+• ดึงการเปลี่ยนแปลงจาก origin/main
+
+• **Rebase** หมายถึงการนำ commit ใหม่จาก origin/main มาวางก่อน แล้วนำ commit ของคุณไปวางต่อท้าย
+
+• ปรับโครงสร้าง commit ใหม่ ให้ดูเรียบร้อยกว่าแบบ merge
+
+```
+ก่อน `git pull --rebase`
+origin/main: A -- B -- C
+local/main:  A -- B -- X -- Y
+
+หลัง `git pull --rebase`
+origin/main: A -- B -- C
+local/main:  A -- B -- C -- X' -- Y'  (X, Y ถูกวางใหม่)
+```
+
