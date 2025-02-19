@@ -3,7 +3,7 @@
 # 1. Pull query basic
 ```js
 //basic .find() structure
-db.prodicts.fin(
+db.prodicts.find(
 	{}, //for condition
 	{} //for select fields
 )
