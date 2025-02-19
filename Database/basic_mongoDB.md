@@ -1,21 +1,36 @@
+
+**It's not all commands, it's just the commands I've used.**
 # 1. Pull query basic
 ```js
+//basic .find() structure
+db.prodicts.fin(
+	{}, //for condition
+	{} //for select fields
+)
+
 //pull all
 db.products.find({})
 //pull only catagory = sneakers
 db.products.find({ category: "sneakers" })
 //pull only have "limited edition" in array tags
 db.products.find({ tags: "limited edition" })
+//pull all with out category fields exist
+db.collection.find({ category: { $exists: false } })
 
 //nested document
 //customer is document inside main document
 //want to pull only name of customer = John Doe
-db.orders.find({ "customer.name": "John Doe" })
+db.orders.find({ "customer.name": "John Doe" }, {}) //empty {} can use for select fields
+
 ```
 # 2. Condition Query
 ### 2.1 finding same value
 ```js
+//find category == "sneakers"
 db.products.find({ category: "sneakers" })
+
+//find Array size = 3
+db.collection.find({ myArray: { $size: 3 } })z z
 ```
 ### 2.2 <, <=, >, >=
 ```js
@@ -50,7 +65,7 @@ db.products.find({
 ```js
 db.products.find(
   { category: "sneakers" }, 
-  { name: 1, price: 1, _id: 0 }
+  { name: 1, price: 1, _id: 0 } //select fields
 )
 ```
 
@@ -89,18 +104,29 @@ db.products.aggregate([
   { $match: { category: "sneakers" } }
 ])
 ```
+
 ### $group -> group and count
 ```js
-//group by category
-//cal avg price from each group
-db.products.aggregate([
-  { $group: { _id: "$category", avgPrice: { $avg: "$price" } } }
-])
+//basic syntax
+db.collection.aggregate([
+  {
+    $group: {
+      _id: <expression>,  // The field to group by
+      <newField>: { <accumulator>: <expression> }
+    }
+  }
+]);
 
-//group by brand
-//find number of products in each group
 db.products.aggregate([
-  { $group: { _id: "$brand", totalProducts: { $sum: 1 } } }
+  { $group:
+	  {
+		  _id: "$category", //group by catagory
+		  avgPrice: { $avg: "$price" }, //find avg of price
+		  prices: { $addToSet: "$airline.name"}, //create array of price
+		  total: {$sum:"$price"}, //total price
+		  number: {$sum:1} //number of item in group
+	  }
+  }
 ])
 ```
 ### $project -> select Fields
@@ -110,6 +136,21 @@ db.products.aggregate([
 db.products.aggregate([
   { $project: { name: 1, price: 1, brand: 1, _id: 0 } }
 ])
+
+//basic arimetric
+db.orders.aggregate([
+  {
+    $project: {
+      totalPrice: { $multiply: ["$price", "$quantity"] },
+      discountedPrice: { $subtract: [{ $multiply: ["$price", "$quantity"] }, "$discount"] },
+      finalAmount: { $add: [{ "$multiply": ["$price", "$quantity"] }, "$tax"] },
+      profitMargin: { $divide: ["$profit", "$revenue"] }
+    }
+  }
+])
+
+//create TotalR fields for size of reviews
+db.AirBnB.aggregate([ { $project: { TotalR: { $size: "$reviews" } } }])
 ```
 ### $sort
 ```js
@@ -195,5 +236,32 @@ db.orders.aggregate([
   { $sort: { total_spent: -1 } },
   { $limit: 3 }
 ])
+```
+
+
+### `$expr` operator
+-> `$expr` allows to use **aggregation expressions** inside `find()` query
+### example
+```js
+
+//find document where array size is 50 or more
+db.collection.find({
+  $expr: { $gte: [{ $size: "$myArray" }, 50] }
+})
+
+//show all array "reviews" where size mte 50 and lte 99
+db.AirBnB.find({ $expr: {
+	$and: [
+			{ $gte: [{ $size: "$reviews" }, 50] },
+			{ $lte: [{ $size: "$reviews" }, 99] }
+		] 
+	} 
+})
+
+//all discountPrice less than price
+db.collection.find({
+  $expr: { $lt: ["$discountPrice", "$price"] }
+})
+
 ```
 

@@ -12,7 +12,8 @@
 ### Centralized
 
 all team member connect to central server
-[[imgs/Pasted image 20250217235049.png]]
+![[imgs/Pasted image 20250217235049.png]]
+
 
 share change with other
 
@@ -22,10 +23,9 @@ share change with other
 
 all team member can save snapshots locally on machine
 
-[[imgs/Pasted image 20250217235132.png]]
+![[imgs/Pasted image 20250219113324.png]]
 
 if server offline it still can work together
-
 → git and Mercurial is Distributed
 
 ---
