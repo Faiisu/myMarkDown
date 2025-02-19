@@ -44,7 +44,7 @@ if server offline it still can work together
 
 **Local :** The current repository
 
-```json
+```js
 git config --global user.name "your name"
 git config --global user.email "your email"
 git config --global core.editor "code --wait" //maybe occur issue -> about path envi (ไม่ต้องทำก็ได้)
@@ -64,7 +64,7 @@ if don’t handle end of lines properly → run into some weird issues
 
 ![[imgs/Pasted image 20250217235243.png]]
 
-```json
+```js
 git config --global core.autocrlf input //macOS
 git config --global core.autocrlf true //windows
 ```
@@ -73,7 +73,7 @@ git config --global core.autocrlf true //windows
 
 # 4. Initializing a Repository
 
-```json
+```js
 cd "directory path"
 git init //create .git file in directory
 
