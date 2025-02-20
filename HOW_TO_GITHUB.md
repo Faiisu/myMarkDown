@@ -1,7 +1,3 @@
-**referrance**
-    - [https://www.youtube.com/watch?v=8JJ101D3knE&t=161s&ab_channel=ProgrammingwithMosh](https://www.youtube.com/watch?v=8JJ101D3knE&t=161s&ab_channel=ProgrammingwithMosh)
-    - [http://www.w3schools.com/GIT/](http://www.w3schools.com/GIT/)
-
 # 1. What is GIT
 
 ## Version control system
