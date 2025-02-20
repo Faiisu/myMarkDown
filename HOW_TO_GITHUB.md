@@ -118,7 +118,7 @@ git add <filename>
 git add *.txt // all .txt file
 git add . // all file
 
-git ls-files //show all files in staging area
+git ls-files //show tracked files
 ```
 
 ## put file into localrepo
