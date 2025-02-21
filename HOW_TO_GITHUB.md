@@ -80,16 +80,13 @@ git init //create .git file in directory
 # 5. Git Workflow
 
 ```mermaid
-graph LR
-    A[Working Directory] -->|git add| B[Staging Area]
-
-    B -->|git commit| C[Local Repo]
-
-    C -->|git push| D[Remote Repo]
-
-    D -->|git pull| C
-
-    C -->|git checkout| A
+sequenceDiagram
+	Working Directory ->> Staging Area:git add
+	Staging Area ->> Working Directory:git reset
+	Staging Area ->> Local Repo: git commit
+	Local Repo ->> Remote Repo: git push
+	Local Repo ->> Working Directory: git checkout
+	Remote Repo ->> Working Directory: git pull
 ```
 
 
