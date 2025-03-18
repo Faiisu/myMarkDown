@@ -30,7 +30,7 @@ db.orders.find({ "customer.name": "John Doe" }, {}) //empty {} can use for selec
 db.products.find({ category: "sneakers" })
 
 //find Array size = 3
-db.collection.find({ myArray: { $size: 3 } })z z
+db.collection.find({ myArray: { $size: 3 } })
 ```
 ### 2.2 <, <=, >, >=
 ```js
